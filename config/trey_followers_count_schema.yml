@@ -1,0 +1,24 @@
+page_metrics_days:
+  identifier_column: page_id            # page_id/stream_id is identical to srma_resource['identifier']
+  count_column: page_fans
+twitter_metrics_days:
+  identifier_column: stream_id
+  count_column: follower_count
+googleplus_page_metrics_days:
+  identifier_column: page_id
+  count_column: follower_count
+instagram_page_metrics_days:
+  identifier_column: page_id
+  count_column: total_followers
+linkedin_page_metrics_days:
+  identifier_column: page_id
+  count_column: total_followers
+tumblr_page_metrics_days:
+  identifier_column: page_id
+  count_column: total_followers
+wechat_page_metrics_days:
+  identifier_column: page_id
+  count_column: total_followers
+# youtube_channel_metrics_days: ----- haven't found total_followers
+
+

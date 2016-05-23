@@ -28,13 +28,7 @@ def make_request(url, options)
   p url
   p options
 
-  resp = Typhoeus::Request.new(url,
-                               :method => options[:method],
-                               :headers => options[:headers],
-                               :body => options[:body],
-                               :params => options[:params])
-
-
+  resp = Typhoeus::Request.new(url, options)
   response = resp.run
 
   unless response.response_code == 200

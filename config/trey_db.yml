@@ -1,0 +1,9 @@
+adapter: postgres
+host: localhost
+port: 5432
+database: trey_development
+username: postgres
+password: postgres
+encoding: unicode
+pool: 5
+

@@ -1,0 +1,18 @@
+defaults: &defaults
+  proxy_host: <%= ENV['ACCOUNTABLE_PROXY_HOST'] %>
+  proxy_port: <%= ENV['ACCOUNTABLE_PROXY_PORT'] %>
+
+  disable_caching: true
+  disable_ssl_peer_verification: true
+  use_authentication: false
+
+  redis: redis://localhost:6379/0
+  default_api_version: 3
+
+development:
+  <<: *defaults
+  api_key: <%= ENV['ACCOUNTABLE_API_KEY'] || '81b762b4-f986-48ea-9076-294a998a4f9c' %>
+  accounts_server_urls:
+    1: <%= ENV['ACCOUNTABLE_ACCOUNTS_URL'] || 'https://accounts-api.vitrue.com' %>
+    2: <%= ENV['ACCOUNTABLE_ACCOUNTS_URL'] || 'https://accounts-api.vitrue.com' %>
+    3: <%= ENV['SRMA_API_URL'] || 'https://srma-api.vitrue.com' %>

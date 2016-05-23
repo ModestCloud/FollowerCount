@@ -1,0 +1,41 @@
+base_url: https://optimus.vitrue.com/
+token: 2adc99e8ed1e54ce4157707abca945cba9f66f490d3d7afbd4f3d4a77b873816
+bundle_id: 16415
+user_id: 14973
+
+
+
+srma_url: https://accounts-api.vitrue.com/
+srma_api_key: '81b762b4-f986-48ea-9076-294a998a4f9c'
+
+
+
+trey_url: https://trey.vitrue.com/query/networks/:network/:entity/objects
+trey_api_key: fPbVbYVycm7fhLmun5LF
+networks:
+  - twitter:
+    channel_key: streams
+    entity: twitter_metrics
+    metric: follower_count
+  - facebook:
+    entity: page_metrics
+    metric: page_fans
+  - googleplus:
+    entity: page_metrics
+    metric: follower_count
+  - wechat:
+  - instagram:
+  - tumblr:
+  - linkedin:
+#  - youtube:
+#    entity: channel_metrics
+#    channel_key: channel_ids
+#    metric: subscribers_gained(sum)
+  - default:
+    channel_key: page_ids
+    entity: page_metrics
+    metric: total_followers
+
+date: "2016-05-19"
+
+
