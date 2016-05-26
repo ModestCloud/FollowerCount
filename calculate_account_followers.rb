@@ -11,8 +11,9 @@ FOLLOWER_COUNT_KEY = 'follower_count'
 bundles = YAML.load_file(SRMA_BUNDLE_OUTPUT)
             .map{|bundle| [bundle['id'], bundle]}.to_h
 
-srma_missing_identifiers = []
+summary = TABLE_TO_RESOURCE_TYPE.values.map{|type| [type, 0]}.to_h
 account_counts = {}
+srma_missing_identifiers = []
 
 FOLLOWER_COUNTS.each do |table, counts|
   resource_type = TABLE_TO_RESOURCE_TYPE[table]
@@ -26,6 +27,7 @@ FOLLOWER_COUNTS.each do |table, counts|
                                           FOLLOWER_COUNT_KEY => {}}
       account_counts[root_bundle_id][FOLLOWER_COUNT_KEY][resource_type] ||= 0
       account_counts[root_bundle_id][FOLLOWER_COUNT_KEY][resource_type] += count['followers']
+      summary[resource_type] += count['followers']
     else
       # puts "#{identifier} cannot be found"
       srma_missing_identifiers << identifier
@@ -38,6 +40,13 @@ account_counts.each do |account_id, account_count|
   cnt['total_count'] = cnt.values.reduce(0, :+)
 end
 
-File.write(ACCOUNT_FOLLOWER_COUNT_OUTPUT, account_counts.to_yaml)
+summary['total_count'] = summary.values.reduce(0, :+)
+
+result = {
+  'summary' => summary,
+  'by_acount' => account_counts
+}
+
+File.write(ACCOUNT_FOLLOWER_COUNT_OUTPUT, result.to_yaml)
 File.write('output/srma_missing_identifiers.yml', srma_missing_identifiers.to_yaml)
 
